@@ -23,7 +23,7 @@ app.get('/', (c) => {
     return c.json({
         status: "success",
         message: "Cek Domain API berjalan dengan baik 🚀",
-        usage: "Gunakan endpoint GET /api/check?domain=namadomain"
+        usage: "Gunakan endpoint GET https://cekdomain.duniakedol.store/api/check?domain=namadomain"
     });
 });
 
@@ -67,7 +67,7 @@ app.notFound((c) => {
 const port = parseInt(process.env.PORT) || 3000;
 
 console.log(`\x1b[92m✔ Server Hono (Bun native) berjalan dengan baik!\x1b[0m`);
-console.log(`\x1b[94mℹ Coba akses URL berikut di browser:\x1b[0m http://localhost:${port}/api/check?domain=proyekbaru`);
+console.log(`\x1b[94mℹ API Anda dapat diakses di:\x1b[0m https://cekdomain.duniakedol.store (atau http://localhost:${port} untuk testing)`);
 
 export default {
     port: port,
