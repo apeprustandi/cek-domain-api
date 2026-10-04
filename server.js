@@ -64,12 +64,13 @@ app.notFound((c) => {
     return c.json({ error: "Endpoint tidak ditemukan. Gunakan GET /api/check?domain=namadomain" }, 404);
 });
 
-const port = parseInt(process.env.PORT) || 3000;
+const port = 3111;
 
 console.log(`\x1b[92m✔ Server Hono (Bun native) berjalan dengan baik!\x1b[0m`);
 console.log(`\x1b[94mℹ API Anda dapat diakses di:\x1b[0m https://cekdomain.duniakedol.store (atau http://localhost:${port} untuk testing)`);
 
 export default {
     port: port,
+    hostname: '0.0.0.0', // Buka akses untuk Docker & Cloudflare Tunnel
     fetch: app.fetch
 };
