@@ -271,7 +271,8 @@
         @media (max-width: 600px) {
             .container { padding: 1.5rem; border-radius: 20px; }
             h1 { font-size: 1.8rem; }
-            .input-group { flex-direction: column; }
+            .input-group { flex-direction: row; gap: 8px; }
+            input { padding: 1rem 1rem; font-size: 0.95rem; }
             button { padding: 1rem; }
             .domain-card { padding: 1rem; }
             .domain-name { font-size: 1.1rem; }
@@ -295,7 +296,7 @@
             </button>
         </div>
         <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: -1.5rem; margin-bottom: 2rem;">
-            *Ekstensi yang dicek: .app, .dev, .online, .site, .space, .store, .tech, .website
+            *Ekstensi yang dicek: {{EXTS_PLACEHOLDER}}
         </p>
         <div class="results" id="resultsContainer">
             <!-- Tempat kartu domain muncul -->

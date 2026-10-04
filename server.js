@@ -21,7 +21,8 @@ app.use('/*', cors());
 // Halaman utama API (Root Endpoint) melayani UI Frontend dari file terpisah
 app.get('/', async (c) => {
     try {
-        const htmlContent = await Bun.file('pages/index.html').text();
+        let htmlContent = await Bun.file('pages/index.html').text();
+        htmlContent = htmlContent.replace('{{EXTS_PLACEHOLDER}}', EXTS.join(', '));
         return c.html(htmlContent);
     } catch (e) {
         return c.text("File pages/index.html tidak ditemukan!", 404);
