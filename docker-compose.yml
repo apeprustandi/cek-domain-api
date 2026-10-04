@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  domain-api:
+    build: .
+    container_name: domain-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT:-3000}
+      - VERCEL_TOKEN=${VERCEL_TOKEN}
+    # opsional: batasi memori karena Bun sangat irit
+    deploy:
+      resources:
+        limits:
+          memory: 128M
