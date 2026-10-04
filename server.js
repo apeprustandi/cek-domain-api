@@ -13,7 +13,7 @@ if (!CONFIG.TOKEN) {
     process.exit(1);
 }
 
-const EXTS = [".dev", ".app", ".tech", ".online", ".store", ".site"];
+const EXTS = [".app", ".dev", ".online", ".site", ".space", ".store", ".tech", ".website"];
 
 // Mengaktifkan CORS agar bisa diakses dari frontend mana pun
 app.use('/*', cors());
