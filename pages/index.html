@@ -330,6 +330,14 @@
                     return;
                 }
 
+                const summaryDiv = document.createElement('div');
+                summaryDiv.className = 'status-badge';
+                summaryDiv.style.justifyContent = 'center';
+                summaryDiv.style.margin = '0 auto 15px auto';
+                summaryDiv.style.width = 'fit-content';
+                summaryDiv.innerHTML = 'Hore! Domain <b>' + cleanBase + '</b> tersedia dengan ekstensi berikut:';
+                resultsContainer.appendChild(summaryDiv);
+
                 domains.forEach((d, index) => {
                     const card = document.createElement('div');
                     card.className = 'domain-card';
@@ -342,12 +350,7 @@
                     nameDiv.className = 'domain-name';
                     nameDiv.textContent = d.domain;
 
-                    const badgeDiv = document.createElement('div');
-                    badgeDiv.className = 'status-badge';
-                    badgeDiv.textContent = 'TERSEDIA';
-
                     infoDiv.appendChild(nameDiv);
-                    infoDiv.appendChild(badgeDiv);
 
                     const actionsDiv = document.createElement('div');
                     actionsDiv.className = 'actions';
