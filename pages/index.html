@@ -289,6 +289,9 @@
                 <div class="loader" id="loader"></div>
             </button>
         </div>
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: -1.5rem; margin-bottom: 2rem;">
+            *Ekstensi yang dicek: .dev, .app, .tech, .online, .store, .site
+        </p>
         <div class="results" id="resultsContainer">
             <!-- Tempat kartu domain muncul -->
         </div>
@@ -326,7 +329,7 @@
                 const domains = await response.json();
                 
                 if (domains.length === 0) {
-                    resultsContainer.innerHTML = '<div class="status-message">Semua ekstensi domain tidak tersedia atau tergolong premium :(</div>';
+                    resultsContainer.innerHTML = '<div class="status-message">Maaf, domain <b>' + cleanBase + '</b> tidak tersedia.</div>';
                     return;
                 }
 
