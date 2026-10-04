@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cek Domain Keren</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
             --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.6);
             --primary: #3b82f6;
             --primary-hover: #2563eb;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --success: #10b981;
+            --success-glow: rgba(16, 185, 129, 0.3);
             --danger: #ef4444;
-            --border: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,59 +33,64 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             padding: 2.5rem;
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 28px;
+            box-shadow: var(--glass-shadow);
+            animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #60a5fa, #34d399);
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #60a5fa, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
         }
 
         p.subtitle {
             text-align: center;
             color: var(--text-muted);
             margin-bottom: 2.5rem;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 300;
         }
 
         .input-group {
             display: flex;
             gap: 12px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
 
         input {
             flex: 1;
-            padding: 1rem 1.25rem;
-            font-size: 1rem;
-            background: rgba(15, 23, 42, 0.6);
+            padding: 1.1rem 1.5rem;
+            font-size: 1.05rem;
+            background: rgba(15, 23, 42, 0.7);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             color: var(--text-main);
             outline: none;
             transition: all 0.3s ease;
@@ -91,39 +99,47 @@
 
         input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            background: rgba(15, 23, 42, 0.9);
         }
 
         input::placeholder { color: var(--text-muted); }
 
         button {
-            padding: 1rem 2rem;
-            font-size: 1rem;
+            padding: 1.1rem 2.5rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
         }
 
         button:hover {
-            background: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
         }
 
-        button:disabled { background: #475569; cursor: not-allowed; transform: none; box-shadow: none; }
+        button:active { transform: translateY(1px); }
+
+        button:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
 
         .loader {
             display: none;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border: 3px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: white;
@@ -133,76 +149,161 @@
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .results {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
 
         .domain-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(15, 23, 42, 0.5);
             border: 1px solid var(--border);
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            border-radius: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            animation: fadeIn 0.4s ease forwards;
+            animation: fadeIn 0.5s ease forwards;
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(15px);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .domain-card:hover {
-            background: rgba(30, 41, 59, 0.8);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
+            background: rgba(30, 41, 59, 0.9);
+            border-color: var(--border-hover);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
+        
+        .domain-card:hover::before { opacity: 1; }
 
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
+        .domain-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
         .domain-name {
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.25rem;
             color: var(--text-main);
+            letter-spacing: 0.5px;
         }
 
         .status-badge {
-            font-weight: 700;
+            font-weight: 600;
             color: var(--success);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-badge::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--success-glow);
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 10px;
+            padding: 0.6rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            border-color: var(--border-hover);
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active { transform: scale(0.95); }
+        
+        .copy-btn.copied {
+            color: var(--success);
+            border-color: var(--success);
             background: rgba(16, 185, 129, 0.1);
-            padding: 0.35rem 0.85rem;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.2);
         }
 
         .status-message {
             text-align: center;
             color: var(--text-muted);
             font-style: italic;
-            padding: 1rem 0;
+            padding: 2rem 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            border: 1px dashed var(--border);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; border-radius: 20px; }
+            h1 { font-size: 1.8rem; }
+            .input-group { flex-direction: column; }
+            button { padding: 1rem; }
+            .domain-card { padding: 1rem; }
+            .domain-name { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Cek Domain Keren</h1>
-        <p class="subtitle">Temukan domain impian Anda dengan ekstensi populer</p>
+        <p class="subtitle">Temukan domain impian Anda dengan ekstensi masa depan</p>
         <div class="input-group">
-            <input type="text" id="domainInput" placeholder="Masukkan nama (contoh: apeprustandi)" autocomplete="off">
+            <input type="text" id="domainInput" placeholder="Masukkan nama (tanpa titik)" autocomplete="off" spellcheck="false">
             <button id="searchBtn">
-                <span id="btnText">Cari</span>
+                <span id="btnText">Cari Sekarang</span>
                 <div class="loader" id="loader"></div>
             </button>
         </div>
-        <div class="results" id="resultsContainer"></div>
+        <div class="results" id="resultsContainer">
+            <!-- Tempat kartu domain muncul -->
+        </div>
     </div>
+    
     <script>
         const searchBtn = document.getElementById('searchBtn');
         const domainInput = document.getElementById('domainInput');
         const btnText = document.getElementById('btnText');
         const loader = document.getElementById('loader');
         const resultsContainer = document.getElementById('resultsContainer');
+
+        // Ikon SVG
+        const copyIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+        const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
         domainInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') performSearch();
@@ -212,14 +313,13 @@
 
         async function performSearch() {
             const base = domainInput.value.trim().toLowerCase();
-            if (!base) return alert('Nama domain tidak boleh kosong!');
+            if (!base) return alert('Ketikkan nama domain terlebih dahulu!');
             
             const cleanBase = base.split('.')[0];
             setLoadingState(true);
             resultsContainer.innerHTML = '';
 
             try {
-                // Memanggil endpoint API di Hono /api/check
                 const response = await fetch('/api/check?domain=' + encodeURIComponent(cleanBase));
                 if (!response.ok) throw new Error('Network Error');
                 
@@ -235,6 +335,9 @@
                     card.className = 'domain-card';
                     card.style.animationDelay = (index * 0.08) + 's';
 
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'domain-info';
+                    
                     const nameDiv = document.createElement('div');
                     nameDiv.className = 'domain-name';
                     nameDiv.textContent = d.domain;
@@ -243,12 +346,38 @@
                     badgeDiv.className = 'status-badge';
                     badgeDiv.textContent = 'TERSEDIA';
 
-                    card.appendChild(nameDiv);
-                    card.appendChild(badgeDiv);
+                    infoDiv.appendChild(nameDiv);
+                    infoDiv.appendChild(badgeDiv);
+
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'actions';
+
+                    const copyBtn = document.createElement('button');
+                    copyBtn.className = 'copy-btn';
+                    copyBtn.innerHTML = copyIcon;
+                    copyBtn.title = "Salin domain";
+                    
+                    copyBtn.addEventListener('click', async () => {
+                        try {
+                            await navigator.clipboard.writeText(d.domain);
+                            copyBtn.innerHTML = checkIcon;
+                            copyBtn.classList.add('copied');
+                            setTimeout(() => {
+                                copyBtn.innerHTML = copyIcon;
+                                copyBtn.classList.remove('copied');
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Gagal menyalin', err);
+                        }
+                    });
+
+                    actionsDiv.appendChild(copyBtn);
+                    card.appendChild(infoDiv);
+                    card.appendChild(actionsDiv);
                     resultsContainer.appendChild(card);
                 });
             } catch (error) {
-                resultsContainer.innerHTML = '<div class="status-message" style="color: var(--danger)">Gagal terhubung ke API.</div>';
+                resultsContainer.innerHTML = '<div class="status-message" style="color: var(--danger)">Gagal terhubung ke server. Silakan coba lagi.</div>';
             } finally {
                 setLoadingState(false);
             }
