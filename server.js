@@ -51,8 +51,14 @@ app.get('/api/check', async (c) => {
         const data = await response.json();
         const results = data.domains || data.results || [];
 
-        // Filter hanya yang tersedia dan bukan premium
-        const availableDomains = results.filter(d => d.available === true && d.premium === false);
+        // Filter hanya yang tersedia dan bukan premium, lalu format response-nya
+        const availableDomains = results
+            .filter(d => d.available === true && d.premium === false)
+            .map(d => ({
+                domain: d.domain || d.name,
+                available: d.available,
+                premium: d.premium
+            }));
 
         return c.json(availableDomains);
     } catch (error) {
