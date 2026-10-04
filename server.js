@@ -18,6 +18,15 @@ const EXTS = [".dev", ".app", ".tech", ".online", ".store", ".site"];
 // Mengaktifkan CORS agar bisa diakses dari frontend mana pun
 app.use('/*', cors());
 
+// Halaman utama API (Root Endpoint)
+app.get('/', (c) => {
+    return c.json({
+        status: "success",
+        message: "Cek Domain API berjalan dengan baik 🚀",
+        usage: "Gunakan endpoint GET /api/check?domain=namadomain"
+    });
+});
+
 app.get('/api/check', async (c) => {
     const baseDomain = c.req.query('domain');
 
