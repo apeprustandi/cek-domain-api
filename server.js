@@ -18,13 +18,14 @@ const EXTS = [".dev", ".app", ".tech", ".online", ".store", ".site"];
 // Mengaktifkan CORS agar bisa diakses dari frontend mana pun
 app.use('/*', cors());
 
-// Halaman utama API (Root Endpoint)
-app.get('/', (c) => {
-    return c.json({
-        status: "success",
-        message: "Cek Domain API berjalan dengan baik 🚀",
-        usage: "Gunakan endpoint GET https://cekdomain.duniakedol.store/api/check?domain=namadomain"
-    });
+// Halaman utama API (Root Endpoint) melayani UI Frontend dari file terpisah
+app.get('/', async (c) => {
+    try {
+        const htmlContent = await Bun.file('pages/index.html').text();
+        return c.html(htmlContent);
+    } catch (e) {
+        return c.text("File pages/index.html tidak ditemukan!", 404);
+    }
 });
 
 app.get('/api/check', async (c) => {
