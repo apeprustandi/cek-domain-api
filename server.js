@@ -4,14 +4,8 @@ import { cors } from 'hono/cors';
 const app = new Hono();
 
 const CONFIG = {
-    API_URL: process.env.VERCEL_API_URL || 'https://api.vercel.com/v1/registrar/domains/search',
-    TOKEN: process.env.VERCEL_TOKEN
+    API_URL: process.env.VERCEL_API_URL || 'https://api.vercel.com/v1/registrar/domains/search'
 };
-
-if (!CONFIG.TOKEN) {
-    console.error("❌ ERROR: VERCEL_TOKEN tidak ditemukan di environment variables (.env)!");
-    process.exit(1);
-}
 
 const EXTS = [".app", ".dev", ".online", ".site", ".space", ".store", ".tech", ".website"];
 
@@ -44,7 +38,6 @@ app.get('/api/check', async (c) => {
         const response = await fetch(CONFIG.API_URL, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${CONFIG.TOKEN}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ domains: targetDomains })
