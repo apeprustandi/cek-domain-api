@@ -7,7 +7,10 @@ const CONFIG = {
     API_URL: process.env.VERCEL_API_URL || 'https://api.vercel.com/v1/registrar/domains/search'
 };
 
-const EXTS = [".app", ".dev", ".online", ".site", ".space", ".store", ".tech", ".website"];
+const EXTS = [
+  ".agency", ".app", ".co", ".company", ".dev", ".digital", ".info", ".live",
+  ".online", ".pro", ".site", ".space", ".store", ".studio", ".tech", ".website",
+];
 
 // Mengaktifkan CORS agar bisa diakses dari frontend mana pun
 app.use('/*', cors());
